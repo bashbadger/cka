@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-high-mem
+spec:
+  containers:
+  - name: nginx-high-mem
+    image: nginx
+    resources:
+      requests:
+        memory: "10Gi"
+        cpu: "1"
+      limits:
+        memory: "20Gi"
+        cpu: "2.5"

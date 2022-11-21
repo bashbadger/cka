@@ -5,7 +5,7 @@ certification.
 
 ## Objectives
 
-Current objecties are listed
+Current objectives are listed
 [here](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/).
 
 Exam is based on the latest minor version (x.**y**.z).

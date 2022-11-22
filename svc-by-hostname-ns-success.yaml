@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: other
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echoserver
+  namespace: other
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: echoserver
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: echoserver
+  name: echoserver
+  namespace: other
+spec:
+  containers:
+  - image: k8s.gcr.io/echoserver:1.10
+    name: echoserver
+    ports:
+    - containerPort: 8080
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: business
+spec: {}
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: business
+spec:
+  containers:
+    - image: busybox
+      name: busybox
+      command: ['sh', '-c', 'wget echoserver.other:8080']
+  restartPolicy: Never

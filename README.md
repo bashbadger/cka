@@ -50,3 +50,47 @@ List of tasks and areas to be comfortable with before taking the exam.
 - Install and use a metrics server
 - Troubleshoot applications
 - Troubleshoot clusters
+
+## Exam tips
+
+### Kubernetes docs
+
+Exam allows access only to the kubernetes [documentation](https://kubernetes.io/docs/).
+
+Particularly useful pages:
+- [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+### Minimal .vimrc
+
+Minimal ~/.vimrc to make yaml editing easier in vim:
+
+```vim
+" remember this for exam
+" to avoid tab pain
+set tabstop=2
+set shiftwidth=2
+set expandtab
+inoremap jk <ESC>
+```
+
+### Aliases
+
+Potentially useful aliases:
+
+```bash
+alias k='kubectl'   # already available on exam
+alias kr='kubectl run'
+alias kc='kubectl create'
+alias ka='kubectl apply'
+alias kd='kubectl delete --force'   # exam doesn't care about graceful termination
+```
+
+### Variable for --dry-run
+
+Avoid typing `-o yaml --dry-run=client` each time you want to generate
+example yaml.
+
+```bash
+export dry='-o yaml --dry-run=client'
+k run nginx --image=nginx $dry > example.yaml   # example
+```

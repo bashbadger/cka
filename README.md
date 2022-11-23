@@ -62,7 +62,7 @@ Particularly useful pages:
 
 ### Minimal .vimrc
 
-Minimal ~/.vimrc to make yaml editing easier in vim:
+Minimal `~/.vimrc` to make yaml editing easier in vim:
 
 ```vim
 " remember this for exam

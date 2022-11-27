@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: builder-sa
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: sa-pod
+  name: sa-pod
+spec:
+  containers:
+  - image: alpine
+    name: sa-pod
+  restartPolicy: Never
+  serviceAccountName: builder-sa

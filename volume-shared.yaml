@@ -1,0 +1,25 @@
+# Example showing a volume shared between 2 containers in the same pod
+# Test with:
+# kubectl logs volpod -c volpod2
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volpod
+spec:
+  containers:
+  - image: busybox
+    name: volpod1
+    command: ['sh', '-c', 'echo Success! > /output/success.txt']
+    volumeMounts:
+    - mountPath: /output
+      name: myvol
+  - image: busybox
+    name: volpod2
+    command: ['sh', '-c', 'cat /input/success.txt']
+    volumeMounts:
+    - mountPath: /input
+      name: myvol
+  volumes:
+  - name: myvol
+    hostPath:
+      path: /var/tmp/data

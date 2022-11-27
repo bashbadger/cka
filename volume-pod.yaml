@@ -1,0 +1,16 @@
+# stores data in /var/tmp/data on the node
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volpod
+spec:
+  containers:
+  - image: nginx
+    name: volpod
+    volumeMounts:
+    - mountPath: /etc/data
+      name: myvol
+  volumes:
+  - name: myvol
+    hostPath:
+      path: /var/tmp/data

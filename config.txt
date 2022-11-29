@@ -1,0 +1,2 @@
+POTATO=1
+BEST_APP=nginx

@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  BEST_APP: nginx
+  POTATO: "1"
+kind: ConfigMap
+metadata:
+  name: myconf
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: mynginx
+  name: mynginx
+spec:
+  containers:
+  - image: nginx
+    name: mynginx
+    envFrom:
+    - configMapRef:
+        name: myconf
+# Check for variables in pod:
+# k exec mynginx -it -- /bin/sh
+# env 

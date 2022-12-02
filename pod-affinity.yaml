@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-green
+  name: nginx-green
+spec:
+  containers:
+  - image: nginx
+    name: nginx-green
+    resources: {}
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: colour
+            operator: In
+            values:
+            - green
+            - red

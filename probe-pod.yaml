@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: hello
+  name: hello
+spec:
+  containers:
+  - image: nginx
+    name: hello
+    ports:
+    - name: myport
+      containerPort: 80
+    startupProbe:
+      httpGet:
+        path: /
+        port: myport
+      initialDelaySeconds: 2
+      failureThreshold: 20
+    readinessProbe:
+      httpGet:
+        path: /
+        port: myport
+      initialDelaySeconds: 2
+    livenessProbe:
+      httpGet:
+        path: /
+        port: myport
+      initialDelaySeconds: 5
+      periodSeconds: 10
+# kubectl logs -f hello

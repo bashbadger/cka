@@ -17,8 +17,7 @@ List of tasks and areas to be comfortable with before taking the exam.
 ### Cluster Architecture, Installation & Configuration (25%)
 
 - Define RBAC rules
-- Create and upgrade a cluster
-- Understand HA topologies
+- Upgrade a cluster, including kubelet and kubectl
 - Back up and restore etcd
 
 ### Workloads & Scheduling (15%)
@@ -28,7 +27,6 @@ List of tasks and areas to be comfortable with before taking the exam.
 - Create ConfigMaps and Secrets, different sources and types
 - Understand resource boundaries on scheduling (requests, limits)
 - Manage objects with imperative and declarative approach
-- High level understanding of templating tools: `kustomize`, `yq`, `helm`
 
 ### Services & Networking (25%)
 
@@ -38,7 +36,6 @@ List of tasks and areas to be comfortable with before taking the exam.
 
 ### Storage (10%)
 
-- Understand the need and use cases for a volume
 - Define and consume volumes
 - Understand mechanics of defining and consuming a PersistentVolume
 - Difference between static and dynamic provisioning of a PersistentVolume
@@ -47,7 +44,7 @@ List of tasks and areas to be comfortable with before taking the exam.
 
 - Understand logging on a theoretical level 
 - Understand accessing container logs
-- Install and use a metrics server
+- Use a metrics server
 - Troubleshoot applications
 - Troubleshoot clusters
 
@@ -65,19 +62,17 @@ Particularly useful pages:
 Minimal `~/.vimrc` to make yaml editing easier in vim:
 
 ```vim
-" remember this for exam
-" to avoid tab pain
+" Already set in exam
 set tabstop=2
 set shiftwidth=2
 set expandtab
-inoremap jk <ESC>
 ```
 
 ### Aliases
 
 Potentially useful aliases:
 
-```bash
+```shell
 alias k='kubectl'   # already available on exam
 alias kr='kubectl run'
 alias kc='kubectl create'
@@ -90,7 +85,7 @@ alias kd='kubectl delete --force'   # exam doesn't care about graceful terminati
 Avoid typing `-o yaml --dry-run=client` each time you want to generate
 example yaml.
 
-```bash
+```shell
 export dry='-o yaml --dry-run=client'
 k run nginx --image=nginx $dry > example.yaml   # example
 ```
